@@ -7,12 +7,12 @@ This repository provides a medium-sized Japanese GPT-2 model trained on [Japanes
 
 # Use the model
 
-*NOTE:* Use `T5Tokenizer` to initiate the tokenizer if AutoTokenizer encounters any errors.
+*NOTE:* Use `T5Tokenizer` to initiate the tokenizer with argument `extra_ids=0`.
 
 ~~~~
 from transformers import T5Tokenizer, AutoModelForCausalLM
 
-tokenizer = T5Tokenizer.from_pretrained("rinna/japanese-gpt2-medium")
+tokenizer = T5Tokenizer.from_pretrained("rinna/japanese-gpt2-medium", extra_ids=0)
 
 model = AutoModelForCausalLM.from_pretrained("rinna/japanese-gpt2-medium")
 ~~~~
