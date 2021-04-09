@@ -1,3 +1,17 @@
+---
+language: ja
+thumbnail: https://github.com/rinnakk/japanese-gpt2/blob/master/rinna.png
+tags:
+- ja
+- japanese
+- gpt2
+- text-generation
+- lm
+- nlp
+license: mit
+datasets:
+- cc100
+---
 
 # japanese-gpt2-medium
 
