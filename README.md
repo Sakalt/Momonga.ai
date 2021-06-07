@@ -36,10 +36,10 @@ model = AutoModelForCausalLM.from_pretrained("rinna/japanese-gpt2-medium")
 A 24-layer, 1024-hidden-size transformer-based language model.
 
 # Training
-The model was trained on [Japanese CC-100](http://data.statmt.org/cc-100/ja.txt.xz) to optimize a traditional language modelling objective on 8\*V100 GPUs for around 30 days. It reaches around 18 perplexity on a chosen validation set from the same data.
+The model was trained on [Japanese CC-100](http://data.statmt.org/cc-100/ja.txt.xz) to optimize a traditional language modelling objective on 8\\*V100 GPUs for around 30 days. It reaches around 18 perplexity on a chosen validation set from the same data.
 
 # Tokenization
-The model uses a [sentencepiece](https://github.com/google/sentencepiece)-based tokenizer, the vocabulary is also directly adopted from the pre-trained tokenizer in the [link](https://github.com/google/sentencepiece).
+The model uses a [sentencepiece](https://github.com/google/sentencepiece)-based tokenizer, the vocabulary was trained on the Japanese Wikipedia using the official sentencepiece training script.
 
 # Licenese
 [The MIT license](https://opensource.org/licenses/MIT)
