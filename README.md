@@ -12,13 +12,15 @@ license: mit
 datasets:
 - cc100
 - wikipedia
+widget:
+- text: "生命、宇宙、そして万物についての究極の疑問の答えは"
 ---
 
 # japanese-gpt2-medium
 
 ![rinna-icon](./rinna.png)
 
-This repository provides a medium-sized Japanese GPT-2 model. The model is provided by [rinna](https://corp.rinna.co.jp/).
+This repository provides a medium-sized Japanese GPT-2 model. The model was trained using code from Github repository [rinnakk/japanese-pretrained-models](https://github.com/rinnakk/japanese-pretrained-models) by [rinna Co., Ltd.](https://corp.rinna.co.jp/)
 
 # How to use the model
 
