@@ -2,8 +2,6 @@
 language: ja
 thumbnail: https://github.com/rinnakk/japanese-gpt2/blob/master/rinna.png
 tags:
-- ja
-- japanese
 - gpt2
 - text-generation
 - lm
@@ -43,11 +41,11 @@ The model was trained on [Japanese CC-100](http://data.statmt.org/cc-100/ja.txt.
 The model uses a [sentencepiece](https://github.com/google/sentencepiece)-based tokenizer, the vocabulary was trained on the Japanese Wikipedia using the official sentencepiece training script.
 
 # How to cite
-~~~
+```bibtex
 @misc{rinna-japanese-gpt2-medium,
     title = {rinna/japanese-gpt2-medium},
-    author = {Zhao, Tianyu and Sawada, Kei}
-    url = {https://huggingface.co/rinna/japanese-gpt2-medium},
+    author = {Zhao, Tianyu and Sawada, Kei},
+    url = {https://huggingface.co/rinna/japanese-gpt2-medium}
 }
 
 @inproceedings{sawada2024release,
@@ -56,9 +54,11 @@ The model uses a [sentencepiece](https://github.com/google/sentencepiece)-based 
     booktitle = {Proceedings of the 2024 Joint International Conference on Computational Linguistics, Language Resources and Evaluation (LREC-COLING 2024)},
     month = {5},
     year = {2024},
-    url = {https://arxiv.org/abs/2404.01657},
+    pages = {13898--13905},
+    url = {https://aclanthology.org/2024.lrec-main.1213},
+    note = {\url{https://arxiv.org/abs/2404.01657}}
 }
-~~~
+```
 
 # Licenese
 [The MIT license](https://opensource.org/licenses/MIT)
