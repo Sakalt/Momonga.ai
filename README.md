@@ -15,3 +15,4 @@ widget:
 
 元のライセンスはmitライセンスです。
 rinna/japanese-gpt2-mediumがもとです
+https://chatgpt.com
