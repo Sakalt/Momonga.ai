@@ -20,13 +20,16 @@ jobs:
         env:
           HFTOKEN: ${{ secrets.HFTOKEN }}
         run: |
+          echo "Logging in to Hugging Face Hub..."
           huggingface-cli login --token $HFTOKEN
 
       - name: Check if repo exists
         run: |
+          echo "Checking if the repository exists..."
           if huggingface-cli repo info momonga.ai; then
             echo "リポジトリは既に存在します。"
           else
+            echo "リポジトリが存在しないため、作成します..."
             huggingface-cli repo create momonga.ai --type=model
             echo "リポジトリを作成しました。"
           fi
@@ -35,6 +38,7 @@ jobs:
         run: |
           echo "アップロードするファイル:"
           ls -la
+          echo "Uploading files to Hugging Face Hub..."
           if huggingface-cli upload ./ --repo momonga.ai; then
             echo "ファイルをアップロードしました。"
           else
