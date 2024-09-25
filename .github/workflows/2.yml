@@ -40,13 +40,13 @@ jobs:
       - name: Create repository if not exists
         run: |
           echo "Creating repository if it does not exist..."
-          huggingface-cli repo create momonga-ai --type=model --yes || echo "リポジトリは既に存在します。"
+          huggingface-cli repo create momonga.ai --type=model --yes || echo "リポジトリは既に存在します。"
 
       - name: Upload files to Hugging Face Hub
         run: |
           echo "Uploading files to Hugging Face Hub..."
           cd japanese-gpt2-medium || exit
-          if huggingface-cli upload ./ --repo momonga-ai --repo-type=model --all-files; then
+          if huggingface-cli upload ./ momonga.ai --repo-type=model --all-files; then
             echo "ファイルをアップロードしました。"
           else
             echo "ファイルのアップロードに失敗しました。"
