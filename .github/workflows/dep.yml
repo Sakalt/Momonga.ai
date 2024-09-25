@@ -16,25 +16,26 @@ jobs:
         run: |
           pip install huggingface_hub transformers
 
-      - name: Upload to Hugging Face Hub
+      - name: Login to Hugging Face Hub
         env:
           HFTOKEN: ${{ secrets.HFTOKEN }}
         run: |
           huggingface-cli login --token $HFTOKEN
 
-          # リポジトリの作成（必要に応じてコメントアウト）
-          if huggingface-cli repo create momonga.ai --type=model; then
-            echo "リポジトリを作成しました。"
+      - name: Check if repo exists
+        run: |
+          if huggingface-cli repo info momonga.ai; then
+            echo "リポジトリは既に存在します。"
           else
-            echo "リポジトリはすでに存在します。"
+            huggingface-cli repo create momonga.ai --type=model
+            echo "リポジトリを作成しました。"
           fi
 
-          # アップロード対象のファイルをリスト表示
+      - name: Upload to Hugging Face Hub
+        run: |
           echo "アップロードするファイル:"
           ls -la
-
-          # リポジトリ全体のファイルをアップロード
-          if huggingface-cli upload ./* --repo momonga.ai --all-files; then
+          if huggingface-cli upload ./ --repo momonga.ai; then
             echo "ファイルをアップロードしました。"
           else
             echo "ファイルのアップロードに失敗しました。"
