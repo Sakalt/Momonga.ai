@@ -9,24 +9,25 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
-      # GitHubリポジトリのチェックアウト
+      # 1. リポジトリのチェックアウト
       - name: Checkout repository
         uses: actions/checkout@v2
 
-      # 依存関係のインストール
+      # 2. 必要な依存関係のインストール
       - name: Install dependencies
         run: |
           pip install huggingface_hub transformers
 
-      # Hugging Face Hubへのアップロード
+      # 3. Hugging Face Hubへのアップロード
       - name: Upload to Hugging Face Hub
         env:
-          HF_TOKEN: ${{ secrets.HFTOKEN }}
+          HFTOKEN: ${{ secrets.HFTOKEN }}  # Hugging Faceのトークン
         run: |
-          huggingface-cli login --token $HF_TOKEN
+          # Hugging Face Hubにログイン
+          huggingface-cli login --token $HFTOKEN
           
-          # リポジトリ全体のファイルをアップロード
-          huggingface-cli repo create repository-name --type=model
+          # リポジトリの作成（必要に応じてコメントアウト）
+          huggingface-cli repo create repository-name --type=model || echo "リポジトリはすでに存在します。"
 
-          # ファイル全体をアップロード
+          # リポジトリ全体のファイルをアップロード
           huggingface-cli upload ./* --repo repository-name --all-files
