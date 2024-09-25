@@ -23,7 +23,7 @@ jobs:
           huggingface-cli login --token $HFTOKEN
 
           # リポジトリの作成（必要に応じてコメントアウト）
-          if huggingface-cli repo create repository-name --type=model; then
+          if huggingface-cli repo create momonga.ai --type=model; then
             echo "リポジトリを作成しました。"
           else
             echo "リポジトリはすでに存在します。"
@@ -34,7 +34,7 @@ jobs:
           ls -la
 
           # リポジトリ全体のファイルをアップロード
-          if huggingface-cli upload ./* --repo repository-name --all-files; then
+          if huggingface-cli upload ./* --repo momonga.ai --all-files; then
             echo "ファイルをアップロードしました。"
           else
             echo "ファイルのアップロードに失敗しました。"
