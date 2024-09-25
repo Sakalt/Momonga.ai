@@ -46,4 +46,4 @@ jobs:
         run: |
           echo "Uploading files to Hugging Face Hub..."
           cd japanese-gpt2-medium || exit
-          huggingface-cli upload ./ --repo-id Sakalti/momonga-ai --repo-type=model --all-files
+          huggingface-cli upload ./ --repo-id Sakalti/momonga-ai --repo-type model --all-files
