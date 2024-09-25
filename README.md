@@ -1,6 +1,5 @@
 ---
 language: ja
-thumbnail: https://github.com/rinnakk/japanese-gpt2/blob/master/rinna.png
 tags:
 - gpt2
 - text-generation
