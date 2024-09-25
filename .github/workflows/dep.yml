@@ -1,4 +1,4 @@
-name: Hugging Face Hub repo create
+name: Hugging Face Hub upload and create
 
 on:
   push:
