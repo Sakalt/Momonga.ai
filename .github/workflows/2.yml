@@ -1,0 +1,54 @@
+name: Deploy to Hugging Face Hub
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Install dependencies
+        run: |
+          sudo apt-get install git-lfs
+          git lfs install
+          pip install huggingface_hub transformers
+
+      - name: Clone rinna/japanese-gpt2-medium
+        run: |
+          git lfs clone https://huggingface.co/rinna/japanese-gpt2-medium
+
+      - name: Move to cloned directory
+        run: |
+          cd japanese-gpt2-medium || exit
+          echo "現在のディレクトリ:"
+          pwd
+          echo "ファイル一覧:"
+          ls -la
+
+      - name: Login to Hugging Face Hub
+        env:
+          HFTOKEN: ${{ secrets.HFTOKEN }}
+        run: |
+          echo "Logging in to Hugging Face Hub..."
+          huggingface-cli login --token $HFTOKEN
+
+      - name: Create repository if not exists
+        run: |
+          echo "Creating repository if it does not exist..."
+          huggingface-cli repo create your_new_repo_name --type=model --yes || echo "リポジトリは既に存在します。"
+
+      - name: Upload files to Hugging Face Hub
+        run: |
+          echo "Uploading files to Hugging Face Hub..."
+          cd japanese-gpt2-medium || exit
+          if huggingface-cli upload ./ --repo your_new_repo_name --repo-type=model --all-files; then
+            echo "ファイルをアップロードしました。"
+          else
+            echo "ファイルのアップロードに失敗しました。"
+            exit 1
+          fi
